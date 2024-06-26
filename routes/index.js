@@ -6,7 +6,7 @@ var router = express.Router();
 router.post('/', updatemark);
 router.post('/addstudent', addstudent);
 router.post('/delete', deletem);
-router.post('/show', show);
+router.get('/show', show);
 
 
 
