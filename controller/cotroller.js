@@ -52,3 +52,12 @@ exports.deletem = async (req, res) => {
     data,
   });
 };
+
+exports.show = async (req, res) => {
+    var data = await mark.find().populate("student_id")
+  
+    res.status(200).json({
+      status: "find",
+      data,
+    });
+  };
