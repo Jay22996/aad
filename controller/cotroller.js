@@ -54,7 +54,7 @@ exports.deletem = async (req, res) => {
 };
 
 exports.show = async (req, res) => {
-    var data = await mark.find().populate("student_id")
+    var data = await post.find().populate("student_id")
   
     res.status(200).json({
       status: "find",
