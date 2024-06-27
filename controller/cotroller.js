@@ -2,16 +2,31 @@ var post = require("../model/studentdata");
 var mark = require("../model/mark");
 
 exports.addstudent = async (req, res) => {
-  var data = await post.create(req.body);
-  var id = data._id;
 
-  req.body.student_id = id;
-  await mark.create(req.body);
+  var chaq = await post.findOne({name:req.body.name})
 
-  res.status(200).json({
-    status: "add done",
-    data,
-  });
+
+  if(chaq === null){
+    var data = await post.create(req.body);
+    var id = data._id;
+  
+    req.body.student_id = id;
+    await mark.create(req.body);
+  
+    res.status(200).json({
+      status: "add done",
+      data,
+    });
+  }else{
+
+    res.status(404).json({
+      status: "user already in use",
+      chaq,
+    });
+  }
+
+
+ 
 };
 
 exports.updatemark = async (req, res) => {
