@@ -4,8 +4,7 @@ var mark = require("../model/mark");
 exports.addstudent = async (req, res) => {
 
   var chaq = await post.findOne({name:req.body.name})
-
-
+  console.log(req.body.name);
   if(chaq === null){
     var data = await post.create(req.body);
     var id = data._id;
